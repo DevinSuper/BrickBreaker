@@ -1,17 +1,11 @@
 import tkinter as tk
+import mechanics
 
 
 root = tk.Tk()
 root.title = "Mancala"
 
 
-
-class Board():
-    def __init__(self):
-        board : [int]
-        score1 : int
-        score2 : int
-        turn : bool
 
 
 
