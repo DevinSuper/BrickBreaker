@@ -19,18 +19,35 @@ class Board():
     def move(self, hole: int) -> None:
         board = self.board
         player = self.players[int(self.turn)] #int(bool) is either 0 or 1
+        if (not 0) not in board[int(self.turn)]: # if the row is all zeros
+            player_end = self.players[int(self.turn)].end
+    
+            if player_end == True or ((not 0) not in board[int( not self.turn)] ): # if the player has previously skipped a turn or nothing that ISN'T zero is in the other row, end the game
+                self.win_check()
+            
+            player_end= True #changing the player's end condition
+            self.turn = not self.turn
+            return
+    
         if(not self.turn): # fancy way of 'self.turn == False'
             board = self.reverseGrid(board) 
+
         player.distribute(hole, board) #board would be reversed for player 2
 
         if(not self.turn): # re-reverse grid
             board = self.reverseGrid(board) 
-        return
+        self.turn = not self.turn
 
     
     
-    def win_check(self) -> None:
-        pass
+    def win_check(self) -> str:
+        if self.players[0].score > self.players[1].score:
+            return "Player 1 wins"
+        elif self.players[0].score == self.players[1].score:
+            return "Tie"
+        else:
+            return "Players 2 wins"
+
 
 class Player():
     def __init__(self, name) -> None:
@@ -39,12 +56,11 @@ class Player():
         self.score = 0
         self.end = False
 
-    def getGrid(self) -> [int]:
-        return self.grid
-
     def distribute(self, hole, board) -> [[int]]:
-        onside = True #on original
-        num = board[0][hole] 
+        self.end = False # if the player had been skipped previously, this resets the count of being skipped twice
+
+        onside = True #iterating on original row 
+        num = board[0][hole] #board [0] refers to moving player's row
         board[0][hole] = 0
         i = num
         while(num > 0):
@@ -59,7 +75,11 @@ class Player():
             i+=1
             
             
-        self.bonus() #check for extra points        
+        self.bonus(board) 
+        return board   
 
-    def bonus(self) -> None:
-        pass
+    def bonus(self, board) -> [[int]]: #check for extra oppurtunities to score
+        for i in board[1]:
+            if i == 2 or i == 3:
+                self.score += i
+                i = 0
