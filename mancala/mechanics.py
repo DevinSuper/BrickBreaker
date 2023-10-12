@@ -42,11 +42,11 @@ class Board():
     
     def win_check(self) -> str:
         if self.players[0].score > self.players[1].score:
-            return "Player 1 wins"
+            return self.players[0].name+" wins"
         elif self.players[0].score == self.players[1].score:
             return "Tie"
         else:
-            return "Players 2 wins"
+            return self.players[1].name+" wins"
 
 
 class Player():
