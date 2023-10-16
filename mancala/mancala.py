@@ -1,13 +1,20 @@
-import tkinter as tk
 import mechanics
+import tkinter as tk
+from tkinter import PhotoImage
 
-
+# Window Creation
 window  = tk.Tk()
 window.title = "Mancala"
-window.configure(bg= "Black")
-#background = tk.PhotoImage(file= "manalaimg.jpg")
+window.configure(bg="Grey")
 
-#2x6
+# Load the image using the file path
+bg_image = PhotoImage(file= r"C:\Users\d3v1n\Downloads\mancalaimg.png")
+
+# Create a label to display the image
+background_label = tk.Label(window, image=bg_image)
+background_label.place(x=10, y=0)
+
+#Creation of the 2x6 grid
 buttonposx = 375
 buttonposy = 100
 i = 0
@@ -22,13 +29,22 @@ for row in range(2): #Creates a row of three buttons and they get added to the b
         buttons[row][col].config(text="4")
         buttonposx+=130
     i+=1
-
+#Creation of the two side buttons (Score Pits)
 lside = tk.Button(window, text="0", font=("Algerian", 75), height= 4, width= 2)
 lside.place(x=242, y=125)
 rside = tk.Button(window, text="0", font=("Algerian", 75), height= 4, width= 2)
 rside.place(x=1152, y=125)
 
+board = mechanics.Board()
+#board.getPlayers()
+#player1name = board.players[0].name
+#player2name = board.players[1].name
+#name1 = tk.Label(window, text= "Player 1: " + player1name, font=("Algerian", 20))
+#name1.place(x= 30, y = 30)
+#name2 = tk.Label(window, text= "Player 2: " + player2name, font=("Algerian", 20))
+#name2.place(x= 30, y = 75)
 
+#board.move()
 
 
 
