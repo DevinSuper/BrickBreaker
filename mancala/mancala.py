@@ -35,7 +35,7 @@ lside.place(x=242, y=125)
 rside = tk.Button(window, text="0", font=("Algerian", 75), height= 4, width= 2)
 rside.place(x=1152, y=125)
 
-board = mechanics.Board()
+#board = mechanics.Board()
 #board.getPlayers()
 #player1name = board.players[0].name
 #player2name = board.players[1].name
