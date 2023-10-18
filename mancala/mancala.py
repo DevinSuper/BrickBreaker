@@ -16,10 +16,15 @@ bg_image = PhotoImage(file= r"C:\Users\d3v1n\Downloads\mancalaimg.png")
 background_label = tk.Label(window, image=bg_image)
 background_label.place(x=10, y=0)
 
+click = 0
+def buttonclick():
+    click = 1
+
 #Creation of the 2x6 grid
 buttonnum = 1
 buttonposx = 375
 buttonposy = 100
+
 i = 0
 buttons = [[4,4,4,4,4,4], [4,4,4,4,4,4]]
 for row in range(2): #Creates two rows of six buttons and they get added to the buttons list
@@ -27,7 +32,7 @@ for row in range(2): #Creates two rows of six buttons and they get added to the 
         buttonposy += 290
         buttonposx = 375
     for col in range(6):
-        buttons[row][col] = tk.Button(window, text=str(buttonnum), font=("Algerian", 70), height= 2, width= 2, padx=2, pady=2)
+        buttons[row][col] = tk.Button(window, text=str(buttonnum), font=("Algerian", 70), height= 2, width= 2, padx=2, pady=2, command=buttonclick)
         buttons[row][col].place(x=buttonposx, y=buttonposy)
         buttons[row][col].config(text="4")
         buttonposx+=130
@@ -48,6 +53,12 @@ name1 = tk.Label(window, text= "Player 1: " + player1name, font=("Algerian", 20)
 name1.place(x= 30, y = 45)
 name2 = tk.Label(window, text= "Player 2: " + player2name, font=("Algerian", 20))
 name2.place(x= 30, y = 90)
+
+if(click==1):
+    for i in range(int(buttons[row][col].cget('text'))):
+        newnum = int(buttons[row][col].cget('text'))+ 1
+        buttons[row][col-1].config(text= str(newnum))
+    click==0
 
 #players = mechanics.Player()
 
