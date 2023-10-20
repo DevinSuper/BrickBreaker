@@ -28,7 +28,7 @@ for row in range(2): #Creates two rows of six buttons and they get added to the 
         buttonposy += 290
         buttonposx = 375
     for col in range(6):
-        buttons[row][col] = tk.Button(window, text=str(buttonnum), font=("Algerian", 70), height= 2, width= 2, padx=2, pady=2, command=buttonclick)
+        buttons[row][col] = tk.Button(window, text=str(buttonnum), font=("Algerian", 70), height= 2, width= 2, padx=2, pady=2)
         buttons[row][col].place(x=buttonposx, y=buttonposy)
         buttons[row][col].config(text="4")
         buttonposx+=130
