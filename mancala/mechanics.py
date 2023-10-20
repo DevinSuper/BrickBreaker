@@ -1,6 +1,6 @@
 class Board():
     def __init__(self) -> None:
-        self.board = [[0,0,0,0,0,0],[0,0,0,0,0,0]]
+        self.board = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
         self.turn = True
         self.players = [Player, Player]
 
@@ -19,10 +19,10 @@ class Board():
     def move(self, hole: int) -> None:
         board = self.board
         player = self.players[int(self.turn)] #int(bool) is either 0 or 1
-        if (not 0) not in board[int(self.turn)]: # if the row is all zeros
+        if board[int(self.turn)] == [0,0,0,0,0,0]: # if the row is all zeros
             player_end = self.players[int(self.turn)].end
     
-            if player_end == True or ((not 0) not in board[int( not self.turn)] ): # if the player has previously skipped a turn or nothing that ISN'T zero is in the other row, end the game
+            if player_end == True or (board[int(not self.turn)] == [0,0,0,0,0,0] ): # if the player has previously skipped a turn or the other row has all zeros, try to end the game
                 self.win_check()
             
             player_end= True #changing the player's end condition
@@ -59,13 +59,13 @@ class Player():
     def distribute(self, hole, board) -> [[int]]:
         self.end = False # if the player had been skipped previously, this resets the count of being skipped twice
 
-        onside = True #iterating on original row 
+        onside = False #iterating on original row 
         num = board[0][hole] #board [0] refers to moving player's row
         board[0][hole] = 0
         i = num
         while(num > 0):
-            if i == len(self.grid): # adds score, iterate on otherside
-                if onside == True: #checks if it's going into own goal
+            if i == len(board[0]): # adds score, iterate on otherside
+                if onside == False: #checks if it's going into own goal
                     self.score+=1
                     num-=1
                 onside=not onside #swap side
