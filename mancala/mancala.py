@@ -29,8 +29,8 @@ def update_board():
     for row in range(2): #Creates a row of three buttons and they get added to the buttons list
         for col in range(6):
             buttons[row][col].config(text=str(board.board[row][col]))
-    lside.config(text=board.players[0].score)
-    rside.config(text=board.players[1].score)
+    lside.config(text=board.players[1].score)
+    rside.config(text=board.players[0].score)
     pass
 # Create a label to display the image
 background_label = tk.Label(window, image=bg_image)
