@@ -62,17 +62,20 @@ class Player():
         onside = False #iterating on original row 
         num = board[0][hole] #board [0] refers to moving player's row
         board[0][hole] = 0
-        i = num
+        i = hole-1
         while(num > 0):
-            if i == len(board[0]): # adds score, iterate on otherside
+            if i == -1: # adds score, iterate on otherside
                 if onside == False: #checks if it's going into own goal
                     self.score+=1
                     num-=1
                 onside=not onside #swap side
-                i = 0
+                i = 5
+                if num == 0:
+                    break
             board[int(onside)][i] +=1
             num-=1
-            i+=1
+            i-=1
+            
             
             
         self.bonus(board) 
