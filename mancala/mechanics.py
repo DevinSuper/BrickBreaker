@@ -8,13 +8,14 @@ class Board():
         self.players[0] = Player(input("Player 1 Name:"))
         self.players[1] = Player(input("Player 2 Name:"))
 
-    def reverseGrid(self, board : [[int]]) -> [[int]]:
+    def reverseGrid(self, board : [[int]], hole ) -> ([[int]], int): 
         pholder = board[0]
         board[0] = board[1]
         board[1] = pholder
         board[0].reverse()
         board[1].reverse()
-        return board
+        newhole = 5-hole
+        return board, newhole
     
     def move(self, hole: int) -> None:
         board = self.board
@@ -30,12 +31,12 @@ class Board():
             return
     
         if(not self.turn): # fancy way of 'self.turn == False'
-            board = self.reverseGrid(board) 
+            board, hole = self.reverseGrid(board, hole) 
 
         player.distribute(hole, board) #board would be reversed for player 2
 
         if(not self.turn): # re-reverse grid
-            board = self.reverseGrid(board) 
+            board,hole = self.reverseGrid(board,hole) 
         self.turn = not self.turn
 
     
@@ -62,17 +63,20 @@ class Player():
         onside = False #iterating on original row 
         num = board[0][hole] #board [0] refers to moving player's row
         board[0][hole] = 0
-        i = num
+        i = hole-1
         while(num > 0):
-            if i == len(board[0]): # adds score, iterate on otherside
+            if i == -1: # adds score, iterate on otherside
                 if onside == False: #checks if it's going into own goal
                     self.score+=1
                     num-=1
                 onside=not onside #swap side
-                i = 0
+                i = 5
+                if num == 0:
+                    break
             board[int(onside)][i] +=1
             num-=1
-            i+=1
+            i-=1
+            
             
             
         self.bonus(board) 
