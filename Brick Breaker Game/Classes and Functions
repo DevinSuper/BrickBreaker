@@ -1,0 +1,137 @@
+import tkinter as tk 
+window = tk.Tk()
+window.configure(bg="Black")
+
+box = tk.Tk()
+box.penup()
+box.goto(-475,475)
+box.pendown()
+
+#Creating Box
+box.pensize(5)
+box.color("white")
+box.speed(1000)
+for i in range(4):
+  box.forward(1000)
+  box.right(90)
+box.ht()
+  
+ob = turtle.Turtle()
+ob.speed(10000)
+ob.color("lightgreen")
+ob.penup()
+ob.goto(-475,250)
+ob.pendown()
+
+linelen = 125
+for i in range(8):
+  ob.speed(10000)
+  ob.forward(linelen)
+  ob.right(90)
+  ob.forward(30)
+  ob.right(90)
+  ob.forward(linelen)
+  ob.right(90)
+  ob.forward(30)
+  ob.right(90)
+  linelen = linelen+125
+  ob.ht()
+  
+obtwo = turtle.Turtle()
+obtwo.speed(10000)
+obtwo.color("yellow")
+obtwo.penup()
+obtwo.goto(-475,280)
+obtwo.pendown()
+
+linelen = 125
+for i in range(8):
+  obtwo.speed(10000)
+  obtwo.forward(linelen)
+  obtwo.right(90)
+  obtwo.forward(30)
+  obtwo.right(90)
+  obtwo.forward(linelen)
+  obtwo.right(90)
+  obtwo.forward(30)
+  obtwo.right(90)
+  linelen = linelen+125
+  obtwo.ht()
+  
+ob3 = turtle.Turtle()
+ob3.speed(10000)
+ob3.color("orange")
+ob3.penup()
+ob3.goto(-475,310)
+ob3.pendown()
+
+linelen = 125
+for i in range(8):
+  ob3.speed(10000)
+  ob3.forward(linelen)
+  ob3.right(90)
+  ob3.forward(30)
+  ob3.right(90)
+  ob3.forward(linelen)
+  ob3.right(90)
+  ob3.forward(30)
+  ob3.right(90)
+  linelen = linelen+125
+  ob3.ht()
+  
+ob4 = turtle.Turtle()
+ob4.speed(10000)
+ob4.color("red")
+ob4.penup()
+ob4.goto(-475,340)
+ob4.pendown()
+
+linelen = 125
+for i in range(8):
+  ob4.speed(10000)
+  ob4.forward(linelen)
+  ob4.right(90)
+  ob4.forward(30)
+  ob4.right(90)
+  ob4.forward(linelen)
+  ob4.right(90)
+  ob4.forward(30)
+  ob4.right(90)
+  linelen = linelen+125
+  ob4.ht()
+  
+floor = turtle.Turtle()
+floor.penup()
+floor.goto(0,-150)
+floor.color("white")
+floor.penup()
+floor.shape("square")
+def moveforward():
+  floor.forward(10)
+  
+def movebackward():
+  floor.backward(10)
+
+screen.onkey(movebackward,"A")
+screen.onkey(moveforward,"D")
+screen.listen()
+
+ball = turtle.Turtle()
+ball.color("white")
+ball.penup()
+ball.goto(0,25)
+
+while True:
+  ball.forward(5)
+  if ball.xcor() > 525 or ball.xcor() < -475:
+    ball.right(180)
+  else:
+    ball.forward(5)
+  if abs(floor.xcor() - ball.xcor()) < 10 and abs(floor.ycor() - ball.ycor()) < 10:
+    ball.right(180)
+  
+
+
+
+
+

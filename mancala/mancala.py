@@ -15,7 +15,7 @@ window.title = "Mancala"
 window.configure(bg="Grey")
 
 # Load the image using the file path
-bg_image = PhotoImage(file= r"C:\Users\dgard\Downloads\luhcalm.png")
+bg_image = PhotoImage(file= r"C:\Users\d3v1n\Downloads\mancalaimg.png")
 
 #callback function for when button is pressed
 def click(player, column):

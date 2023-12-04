@@ -1,12 +1,14 @@
+import tkinter as tk
 class Board():
     def __init__(self) -> None:
         self.board = [[4,4,4,4,4,4],[4,4,4,4,4,4]]
         self.turn = True
         self.players = [Player, Player]
 
-    def getPlayers(self) -> None:
+    def getPlayers(self):
         self.players[0] = Player(input("Player 1 Name:"))
         self.players[1] = Player(input("Player 2 Name:"))
+        return str(self.players[0]) + str(self.players[1])
 
     def reverseGrid(self, board : [[int]], hole ) -> ([[int]], int): 
         pholder = board[0]
